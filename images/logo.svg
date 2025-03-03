@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main circle -->
+    <circle cx="250" cy="250" r="240" fill="white"/>
+    
+    <!-- Outer broken circle segments -->
+    <path d="M250,10 A240,240 0 0,1 433,127" stroke="black" stroke-width="20" fill="none"/>
+    <path d="M433,373 A240,240 0 0,1 250,490" stroke="black" stroke-width="20" fill="none"/>
+    <path d="M67,373 A240,240 0 0,1 67,127" stroke="black" stroke-width="20" fill="none"/>
+    
+    <!-- Eye symbol -->
+    <path d="M250,180 Q325,180 400,250 Q325,320 250,320 Q175,320 100,250 Q175,180 250,180Z" stroke="black" stroke-width="10" fill="none"/>
+    <circle cx="250" cy="250" r="30" fill="black"/>
+    
+    <!-- Text around circle -->
+    <path id="circle-text" d="M250,60 A190,190 0 1,1 249.9,60" fill="none"/>
+    <text>
+        <textPath href="#circle-text" startOffset="0%" text-anchor="middle">
+            <tspan x="50%" dy="-5">ICTECH ICTECH ICTECH ICTECH</tspan>
+        </textPath>
+    </text>
+</svg>

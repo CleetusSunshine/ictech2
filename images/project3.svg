@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="400" fill="#FFF0F0"/>
+    <g transform="translate(250,150)">
+        <path d="M120,20 Q150,0 180,20 T240,20" fill="none" stroke="#FF9999" stroke-width="4"/>
+        <path d="M120,40 Q150,20 180,40 T240,40" fill="none" stroke="#B84B5F" stroke-width="4"/>
+        <path d="M120,60 Q150,40 180,60 T240,60" fill="none" stroke="#FF9999" stroke-width="4"/>
+        <text x="150" y="120" text-anchor="middle" fill="#B84B5F" font-family="Arial" font-size="24">Cloud Migration</text>
+    </g>
+</svg>
