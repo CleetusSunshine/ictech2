@@ -1,6 +1,13 @@
+// DOM Elements
+const burgerMenu = document.querySelector('.burger-menu');
+const navLinks = document.querySelector('.nav-links');
+const typingText = document.querySelector('.typing-text');
+const cursor = document.querySelector('.cursor');
+const sections = document.querySelectorAll('.section');
+const nav = document.querySelector('nav');
+
 // Navigation scroll effect
 window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
         nav.style.background = 'rgba(255, 255, 255, 0.98)';
         nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
@@ -68,9 +75,6 @@ window.addEventListener('scroll', () => {
 });
 
 // Add active state to navigation links
-const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.nav-links a');
-
 window.addEventListener('scroll', () => {
     let current = '';
     
@@ -83,7 +87,7 @@ window.addEventListener('scroll', () => {
         }
     });
     
-    navLinks.forEach(link => {
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').slice(1) === current) {
             link.classList.add('active');
@@ -91,19 +95,57 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Add typing effect to hero text
-const heroText = document.querySelector('.hero p span');
-const text = heroText.textContent;
-heroText.textContent = '';
-let i = 0;
+// Typing effect variables and function
+let textToType = "Empowering Innovation Through Technology";
+let charIndex = 0;
+let isTyping = true;
+let cursorVisible = true;
 
 function typeWriter() {
-    if (i < text.length) {
-        heroText.textContent += text.charAt(i);
-        i++;
+    if (charIndex < textToType.length && isTyping) {
+        typingText.textContent += textToType.charAt(charIndex);
+        charIndex++;
         setTimeout(typeWriter, 100);
     }
 }
 
+// Cursor blinking
+setInterval(() => {
+    cursorVisible = !cursorVisible;
+    cursor.style.opacity = cursorVisible ? '1' : '0';
+}, 500);
+
 // Start typing effect when page loads
 window.addEventListener('load', typeWriter);
+
+// Burger Menu Functionality
+burgerMenu.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    burgerMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = burgerMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        burgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
+        burgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Prevent clicks inside nav-links from closing the menu
+navLinks.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
